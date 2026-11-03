@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#080b14"><meta name="description" content="LAXIS community operator chat.">
+<title>LAXIS — Operator Chat</title>
+<style>
+:root{--bg:#070a12;--panel:#0d1220;--blue:#19baff;--red:#ff3158;--text:#edf4ff;--muted:#91a0b8;--line:rgba(120,180,255,.18)}
+*{box-sizing:border-box}body{margin:0;min-height:100vh;background:radial-gradient(ellipse at 15% 0%,rgba(0,140,255,.12),transparent 38%),radial-gradient(ellipse at 90% 30%,rgba(255,30,80,.10),transparent 32%),var(--bg);color:var(--text);font-family:Inter,ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif}
+body:before{content:"";position:fixed;inset:0;pointer-events:none;opacity:.13;background-image:linear-gradient(rgba(80,160,255,.12) 1px,transparent 1px),linear-gradient(90deg,rgba(80,160,255,.12) 1px,transparent 1px);background-size:48px 48px;z-index:-1}
+a{color:inherit;text-decoration:none}.wrap{width:min(1040px,calc(100% - 32px));margin:auto}
+nav{height:76px;border-bottom:1px solid var(--line);background:#070a12d9;backdrop-filter:blur(14px)}.navin{height:100%;display:flex;align-items:center;justify-content:space-between}.brand{display:flex;gap:11px;align-items:center;font-weight:950;letter-spacing:.22em}.mark{width:32px;height:32px;display:grid;place-items:center;border:1px solid var(--blue);color:var(--blue);transform:rotate(45deg);box-shadow:0 0 18px #19baff2b}.mark span{transform:rotate(-45deg)}.navlinks{display:flex;gap:22px;color:var(--muted);font-size:.88rem}.navlinks a:hover{color:var(--blue)}
+main{padding:48px 0 60px}.eyebrow{font: .72rem ui-monospace,monospace;color:var(--blue);letter-spacing:.2em;text-transform:uppercase}.eyebrow:before{content:"";display:inline-block;width:24px;height:2px;background:var(--red);vertical-align:middle;margin-right:10px}h1{font-size:clamp(2.5rem,6vw,4.5rem);letter-spacing:-.07em;line-height:.95;margin:17px 0}.gradient{background:linear-gradient(100deg,#fff 5%,var(--blue) 50%,var(--red));-webkit-background-clip:text;background-clip:text;color:transparent}.intro{color:var(--muted);line-height:1.7;max-width:660px;margin-bottom:25px}
+.chat{border:1px solid var(--line);background:linear-gradient(145deg,#101a2aee,#090e19f2);box-shadow:0 22px 70px #0005}.chathead{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:17px 20px;border-bottom:1px solid var(--line)}.chathead strong{letter-spacing:.08em}.live{font: .7rem ui-monospace,monospace;color:#65e9a5}.notice{margin:16px;padding:13px 15px;border-left:2px solid var(--red);background:#1b1018;color:#c7b5c2;font-size:.8rem;line-height:1.65}.notice strong{color:#ff8097}
+.feed{height:min(52vh,490px);min-height:300px;overflow-y:auto;padding:20px;display:flex;flex-direction:column;gap:13px}.msg{max-width:86%;padding:13px 15px;background:#101b2b;border:1px solid #19baff25;overflow-wrap:anywhere}.msg.mine{align-self:flex-end;border-color:#ff31584d;background:#21121c}.msg.system{max-width:100%;align-self:stretch;border-style:dashed;color:var(--muted);font-size:.82rem}.msgmeta{display:flex;gap:12px;align-items:center;margin-bottom:7px;font: .69rem ui-monospace,monospace}.msgmeta .name{color:var(--blue);font-weight:800}.mine .msgmeta .name{color:#ff8298}.msgmeta time{color:#6f829d}.msg p{margin:0;font-size:.92rem;line-height:1.6;white-space:pre-wrap}.report{border:0;background:transparent;color:#8997ae;font-size:.68rem;padding:7px 0 0;cursor:pointer}.report:hover{color:var(--red)}
+.composer{border-top:1px solid var(--line);padding:16px;display:flex;gap:10px}.composer input{flex:1;min-width:0;background:#080e19;border:1px solid #26364d;color:var(--text);padding:14px 15px;font:inherit;outline:none}.composer input:focus{border-color:var(--blue);box-shadow:0 0 0 2px #19baff18}.composer button,.action{border:1px solid var(--blue);background:linear-gradient(100deg,#128fe5,#19baff);color:#04101a;font-weight:900;letter-spacing:.06em;padding:0 19px;cursor:pointer}.composer button:disabled{opacity:.45;cursor:not-allowed}.below{display:flex;justify-content:space-between;gap:16px;align-items:center;padding:14px 17px;color:#788ba5;font: .7rem ui-monospace,monospace;border-top:1px solid var(--line)}.below button{background:none;border:0;color:#ff8298;cursor:pointer;font:inherit}.below button:hover{text-decoration:underline}.statusline{color:var(--muted);font-size:.78rem;margin:13px 0}.statusline.error{color:#ff8298}.statusline.ok{color:#65e9a5}footer{padding:22px 0;border-top:1px solid var(--line);color:#77869d;font-size:.78rem}.foot{display:flex;justify-content:space-between;gap:15px}.foot b{letter-spacing:.16em;color:#dbeaff}
+@media(max-width:600px){.navlinks{gap:12px;font-size:.78rem}.navlinks a:nth-child(2){display:none}.chathead{padding:14px}.feed{padding:12px;min-height:300px}.composer{padding:11px}.composer button{padding:0 13px}.below,.foot{flex-direction:column;align-items:flex-start}.msg{max-width:96%}}
+</style>
+</head>
+<body>
+<nav><div class="wrap navin"><a class="brand" href="index.html"><span class="mark"><span>Λ</span></span>LAXIS</a><div class="navlinks"><a href="index.html">Home</a><a href="index.html#capabilities">Focus areas</a><a href="chat.html" aria-current="page" style="color:var(--blue)">Operator Chat</a></div></div></nav>
+<main class="wrap"><div class="eyebrow">Community terminal / 01</div><h1>OPERATOR <span class="gradient">CHAT.</span></h1><p class="intro">A shared community room for security learning, responsible research, and helpful conversation. Pick an automatically generated handle and join in.</p>
+<div class="chat"><div class="chathead"><strong>// LAXIS COMMUNITY CHANNEL</strong><span class="live" id="connection">● CONNECTING</span></div>
+<div class="notice"><strong>PRIVACY & SAFETY:</strong> Handles are pseudonymous, not a promise of complete anonymity. Messages are public to other visitors and may be stored. Do not post your real name, school, address, passwords, private contact details, or anyone else's personal information. Keep it respectful; no threats, scams, harassment, or illegal activity. This room is not monitored continuously.</div>
+<div class="feed" id="feed" aria-live="polite"><div class="msg system"><p>Connecting to the community channel…</p></div></div>
+<form class="composer" id="form"><input id="message" maxlength="500" autocomplete="off" placeholder="Write a message (500 characters max)…" aria-label="Message" required><button id="send" type="submit" disabled>SEND ↗</button></form>
+<div class="below"><span id="identity">HANDLE: GENERATING…</span><button id="reportInfo" type="button">HOW TO REPORT A MESSAGE</button></div></div><div class="statusline" id="status" role="status">Chat setup is needed to enable shared messages.</div>
+</main><footer><div class="wrap foot"><div><b>LAXIS</b> /// Cybersecurity Collective</div><div>Learn ethically. Build securely. Defend together. © 2026</div></div></footer>
+<script type="module">
+// Firebase setup is needed for shared, cross-user chat. Fill in the config below.
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+import { getAuth, signInAnonymously } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+import { getDatabase, ref, push, set, onChildAdded, query, limitToLast, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-database.js";
+
+const firebaseConfig = {
+  apiKey: "PASTE_FIREBASE_WEB_API_KEY",
+  authDomain: "YOUR_PROJECT.firebaseapp.com",
+  databaseURL: "https://YOUR_PROJECT-default-rtdb.firebaseio.com",
+  projectId: "YOUR_PROJECT",
+  appId: "YOUR_FIREBASE_APP_ID"
+};
+const feed=document.getElementById('feed'), form=document.getElementById('form'), input=document.getElementById('message'), send=document.getElementById('send'), connection=document.getElementById('connection'), status=document.getElementById('status'), identity=document.getElementById('identity');
+let db, uid, handle;
+const setStatus=(text,kind='')=>{status.textContent=text;status.className='statusline '+kind;};
+function addMessage(data,key){
+ const el=document.createElement('article');el.className='msg'+(data.uid===uid?' mine':'');
+ const meta=document.createElement('div');meta.className='msgmeta';const name=document.createElement('span');name.className='name';name.textContent=data.handle||'Operator';const time=document.createElement('time');time.textContent=data.createdAt?new Date(data.createdAt).toLocaleTimeString([], {hour:'2-digit',minute:'2-digit'}):'JUST NOW';meta.append(name,time);
+ const body=document.createElement('p');body.textContent=String(data.text||'');el.append(meta,body);
+ if(data.uid!==uid){const report=document.createElement('button');report.className='report';report.type='button';report.textContent='REPORT';report.addEventListener('click',()=>{alert('If a message is concerning, take note of its text and report it to a LAXIS site moderator through the contact link on the home page. Do not share private information.');});el.append(report);}
+ feed.append(el);feed.scrollTop=feed.scrollHeight;
+}
+const configured=!firebaseConfig.apiKey.startsWith('PASTE_')&&!firebaseConfig.projectId.startsWith('YOUR_')&&!firebaseConfig.appId.startsWith('YOUR_');
+if(!configured){connection.textContent='● SETUP REQUIRED';connection.style.color='#ff8298';identity.textContent='HANDLE: PREVIEW MODE';feed.innerHTML='';const msg=document.createElement('div');msg.className='msg system';const p=document.createElement('p');p.textContent='This page is ready for Firebase. Configure the project values and publish the Realtime Database rules in README.txt to enable shared chat.';msg.append(p);feed.append(msg);setStatus('Preview only — messages are not shared yet. Configure Firebase to activate the live room.');}
+else{
+ try{const app=initializeApp(firebaseConfig);const auth=getAuth(app);db=getDatabase(app);const cred=await signInAnonymously(auth);uid=cred.user.uid;handle='Operator-'+Math.floor(1000+Math.random()*9000);identity.textContent='PSEUDONYM: '+handle;connection.textContent='● CONNECTED';connection.style.color='#65e9a5';send.disabled=false;feed.innerHTML='';onChildAdded(query(ref(db,'messages'),limitToLast(100)),snap=>addMessage(snap.val(),snap.key));setStatus('Connected. Messages are shared with other visitors.','ok');}
+ catch(e){connection.textContent='● CONNECTION ERROR';connection.style.color='#ff8298';setStatus('Could not connect. Check Firebase configuration and database rules.','error');}
+}
+form.addEventListener('submit',async e=>{e.preventDefault();const text=input.value.trim();if(!text||!db||!uid)return;if(/https?:\/\/|www\./i.test(text)){setStatus('Links are disabled in this chat for community safety.','error');return;}send.disabled=true;try{const item=push(ref(db,'messages'));await set(item,{uid,handle,text,createdAt:serverTimestamp()});input.value='';setStatus('Message sent.','ok');}catch(e){setStatus('Message could not be sent. Check connection or rules.','error');}finally{send.disabled=false;input.focus();}});
+document.getElementById('reportInfo').addEventListener('click',()=>alert('For concerns, contact the LAXIS site owner using the contact link on the homepage. Avoid posting or forwarding personal information.'));
+</script>
+</body></html>
